@@ -4,20 +4,19 @@
  * @returns 
  */
 const plusOne = (digits: number[]): number[] => {
-  // // e.g. if length is 2, most sig fig is 10
-  // const scale = Math.pow(10, digits.length-1);
-  // const result = [];
-  // for (let i = digits.length; i < 0; i--) {
-  //   if(digits[i] + (scale))
-  // }
 
-  const num = parseInt(digits.join(''), 10) + 1;
-  const stringArr = Number(num).toString().split(',')
+  for (let i = digits.length - 1; i >= 0; i--) {
+    if (digits[i] === 9) {
+      digits[i] = 0;
+    } else {
+      ++digits[i];
+      break;
+    }
+  }
 
+  if (digits[0] === 0) digits.unshift(1);
 
-  console.log(stringArr);
-
-  return [];
+  return digits;
 }
 
-plusOne([9,9,9])
+console.log(plusOne([9, 9, 9]));
